@@ -1,0 +1,116 @@
+body {
+  background-color: #f7f6f6;
+}
+
+#main {
+	padding-bottom: 60px;
+}
+
+.navbar {
+  margin-bottom: 0px;
+}
+
+.navbar-inverse .navbar-brand{
+  font-size: 22px;
+  font-weight: bold;
+  color: #f7f6f6;
+}
+
+#search-area {
+  width: 100%;
+  background: linear-gradient(rgba(0, 0, 0, 0.40),rgba(0, 0, 0, 0.40)),url('../img/film-bg.jpg');
+  padding: 100px 0 150px;
+}
+
+#search-submit {
+  background-color: rgba(0, 0, 0, 0.60);
+  padding: 10px 60px 30px;
+}
+
+#search-area h2 {
+  text-align: center;
+  color: #f7f6f6;
+  font-weight: bold;
+  margin-bottom: 40px;	
+  text-shadow: 1.5px 1.5px 1.5px rgba(63,63,66,1);
+}
+
+.btn-go {
+  background-color: #89bc3e;
+  color: #f7f6f6;
+  font-weight: bold;
+}
+
+.no-response {
+  font-weight: bold;
+  padding: 60px 0;
+  text-align: center;
+}
+
+h1 span {	
+  font-size: 20px;
+}
+
+#imdb-rating  {
+  text-align: left;
+}
+
+#imdb-rating span {
+  display: inline;
+  font-size: 18px;
+}
+
+#imdb-rating .ng-isolate-scope {
+  display: inline;
+}
+
+ul.rating {
+  display: inline-block;
+  padding: 0;
+}
+
+.star-rating {
+  margin: 0;
+  padding: 0;
+  display: inline-block;
+}
+
+.glyphicon-star{
+  padding: 1px;
+  color: #ddd;
+  font-size: 22px;
+  text-shadow: .05em .05em #aaa;
+  list-style-type: none;
+  display: inline-block;
+}
+
+.filled {
+  color: #fd0;
+}
+
+.readonly .glyphicon-star.filled {
+  color: #666;
+}
+
+.img-responsive {
+  border: 2px solid #333;
+}
+
+.movie-plot h3 {
+  margin-top: 10px;
+}
+
+.recent-poster {
+  margin-bottom: 25px;
+}
+
+.movie-details span{
+  font-weight: bold;
+}
+
+@media (min-width: 768px) {
+	#imdb-rating  {
+	  margin-top: 30px;
+	  text-align: right;
+	}
+}

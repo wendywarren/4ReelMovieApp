@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="4ReelMovieApp">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <title>4 Reel</title>
+
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+    <link href="css/style.css" rel="stylesheet">
+    <link rel='shortcut icon' href='favicon.ico' type='image/x-icon'/ >
+</head>
+
+<body>
+
+    <nav class="navbar navbar-inverse navbar-static-top" role="navigation">
+        <div class="container">
+            <div class="navbar-header">
+                <a class="navbar-brand" href="#">4 Reel</a>
+            </div>
+        </div>
+    </nav>
+
+	<div id="main" ng-controller="MovieController as movie">
+		<!-- Search Movie -->
+		<div id="search-area" class="container">
+			<div id="search-submit" class="col-xs-10 col-sm-10 col-md-8 col-xs-offset-1 col-sm-offset-1 col-md-offset-2">
+				<div><h2>Find out more about your favourite movie!</h2></div>
+				<form ng-submit="submit()">	
+					<div class="input-group">
+						<input type="text" ng-model="searchMovie" class="form-control" placeholder="Search movie title">
+						<span class="input-group-btn">
+							<button class="btn btn-secondary btn-go" type="submit">Go!</button>
+						</span>
+					</div>
+				</form> 
+			</div>
+		</div>	
+	
+		<!-- Movie Details - if exists -->
+		<div ng-if="movieDetails.Response==='True'" class="container">
+
+			<div class="row page-header clearfix">
+				<h1 class="col-xs-12 col-sm-6 col-md-6">{{movieDetails.Title}} <span>({{movieDetails.Year}})</span></h1>
+				<div id="imdb-rating" class="col-xs-12 col-sm-6 col-md-6">
+					<span>IMDb Rating: </span>
+					<span ng-repeat="rating in ratings">
+					<div star-rating rating-value="rating.current" max="rating.max"></div>
+					</span>
+				</div>
+			</div>
+
+			<div class="row">
+				<div class="col-xs-12 col-sm-4 col-md-4">
+					<img class="img-responsive" ng-src="{{ movieDetails.Poster=='N/A' ? 'img/no-poster-available.jpg' : movieDetails.Poster }}" >
+				</div>
+
+				<div class="col-xs-12 col-sm-8 col-md-8">
+					<div class="movie-plot">
+						<h3>Plot</h3>
+						<p>{{movieDetails.Plot}}</p>
+					</div>
+					
+					<div class="movie-details">
+						<h3>Movie Details</h3>
+						<p><span>Actors:</span> {{movieDetails.Actors}}</p>
+						<p><span>Director:</span> {{movieDetails.Director}}</p>
+						<p><span>Genre:</span> {{movieDetails.Genre}}</p>
+						<p><span>Released:</span> {{movieDetails.Released}}</p>
+					</div>
+				</div>
+			</div>
+		</div>
+		
+		<!-- Movie Details do not exist -->
+		<div ng-if="movieDetails.Response ==='False'" class="no-response container">
+			<div class="row">
+				<p>Sorry, we didn't find a match.</p>
+			</div>		
+		</div>	
+		
+		<div ng-if="movielinks.length > 0" class="container">
+			<div class="row">
+				<div class="col-lg-12">
+					<h3 class="page-header">Recently Viewed</h3>
+				</div>
+				
+				<div ng-repeat="movielink in movielinks">
+					<div class="col-sm-3 col-xs-6">
+						<a href="#" ng-click="update(movielink.movieTitle)">
+							<img class="img-responsive recent-poster" ng-src="{{ movielink.moviePosterLink=='N/A' ? 'img/no-poster-available.jpg' : movielink.moviePosterLink }}">
+						</a>
+					</div>
+				</div>
+			</div>
+		</div>
+		
+    </div>
+
+    
+	<script src="js/jquery.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+	<script src="js/angular.min.js"></script>
+	<script src="js/app.js"></script>
+</body>
+
+</html>
